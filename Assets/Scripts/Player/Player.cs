@@ -1,6 +1,8 @@
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(CharacterGravityController))]
+[RequireComponent(typeof(PlayerCrouch))]
 public class Player : MonoBehaviour
 {
     public static Player Instance { get; private set; }
@@ -10,7 +12,9 @@ public class Player : MonoBehaviour
     [field:Header("Components")]
 	[field: SerializeField] public Camera Camera { get; private set; }
 	[field: SerializeField] public CharacterController CharacterController { get; private set; }
-    [field: SerializeField] public PlayerView PlayerView { get; private set; }
+	[field: SerializeField] public CharacterGravityController GravityController { get; private set; }
+	[field: SerializeField] public PlayerCrouch PlayerCrouch { get; private set; }
+	[field: SerializeField] public PlayerView PlayerView { get; private set; }
 
 	private void Awake()
 	{
@@ -24,6 +28,8 @@ public class Player : MonoBehaviour
 	{
 		Camera = GetComponentInChildren<Camera>();
 		CharacterController = GetComponent<CharacterController>();
+		GravityController = GetComponent<CharacterGravityController>();
+		PlayerCrouch = GetComponent<PlayerCrouch>();
 		PlayerView = GetComponentInChildren<PlayerView>();
 	}
 
