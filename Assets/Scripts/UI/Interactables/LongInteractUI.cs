@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,9 +12,8 @@ public class LongInteractUI : MonoBehaviour
 
 	private ILongInteractable? _longInteractable;
 
-	private void Awake()
+	private void Start()
 	{
-
 		UpdateUI(0);
 	}
 
@@ -31,7 +31,7 @@ public class LongInteractUI : MonoBehaviour
 
 	private void OnLongInteractableChanged(ILongInteractable? longInteractable = null)
 	{
-		/*if (_longInteractable is not null)
+		if (_longInteractable is not null)
 			_longInteractable.ProgressChanged -= UpdateUI;
 
 		_longInteractable = longInteractable;
@@ -40,7 +40,12 @@ public class LongInteractUI : MonoBehaviour
 		if (_longInteractable is not null)
 			_longInteractable.ProgressChanged += UpdateUI;
 
-		UpdateUI(_longInteractable?.Progress ?? 0);*/
+		UpdateUI(_longInteractable?.Progress ?? 0);
+	}
+
+	private void UpdateUI(object sender, EventArgs e)
+	{
+		UpdateUI(_longInteractable?.Progress ?? 0);
 	}
 
 	private void UpdateUI(float fill)
