@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
 	[field: SerializeField] public Camera Camera { get; private set; }
 	[field: SerializeField] public CharacterController CharacterController { get; private set; }
 	[field: SerializeField] public CharacterGravityController GravityController { get; private set; }
+	[field: SerializeField] public Oxygen Oxygen { get; private set; }
 	[field: SerializeField] public PlayerCrouch PlayerCrouch { get; private set; }
 	[field: SerializeField] public PlayerView PlayerView { get; private set; }
 
@@ -29,6 +30,7 @@ public class Player : MonoBehaviour
 		Camera = GetComponentInChildren<Camera>();
 		CharacterController = GetComponent<CharacterController>();
 		GravityController = GetComponent<CharacterGravityController>();
+		Oxygen = GetComponentInChildren<Oxygen>();
 		PlayerCrouch = GetComponent<PlayerCrouch>();
 		PlayerView = GetComponentInChildren<PlayerView>();
 	}

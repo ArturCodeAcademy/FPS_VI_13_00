@@ -24,14 +24,21 @@ public class Oxygen : MonoBehaviour
 	public event EventHandler OxygenFullyRestored;
 
 	private HashSet<Collider> _noOxygenAreas;
+	private bool _updatedOnThisFrame;
 
 	private void Awake()
 	{
 		_noOxygenAreas = new HashSet<Collider>();
 	}
 
-	private void Update()
+	private void LateUpdate()
 	{
+		if (_updatedOnThisFrame)
+		{
+			_updatedOnThisFrame = false;
+			return;
+		}
+
 		if (_noOxygenAreas.Count > 0 && OxygenLevel > 0)
 		{
 			OxygenLevel -= _oxygenDecreaseRate * Time.deltaTime;
@@ -62,6 +69,22 @@ public class Oxygen : MonoBehaviour
 		}
 
 		OxygenLevel = Mathf.Clamp(OxygenLevel, 0, MAX_OXYGEN_LEVEL);
+	}
+
+	public float AddOxygen(float amount)
+	{
+		if (amount <= 0 || OxygenLevel >= MAX_OXYGEN_LEVEL)
+			return 0;
+
+		_updatedOnThisFrame = true;
+
+		float delta = Mathf.Min(MAX_OXYGEN_LEVEL - OxygenLevel, amount);
+		OxygenLevel += delta;
+
+		OxygenChanged?.Invoke(this, EventArgs.Empty);
+		OxygenRestored?.Invoke(this, EventArgs.Empty);
+
+		return delta;
 	}
 
 	private void OnTriggerEnter(Collider other)
