@@ -7,3 +7,4 @@ Simple Water Shader URP -> https://assetstore.unity.com/packages/2d/textures-mat
 URP Tree Models -> https://assetstore.unity.com/packages/3d/vegetation/trees/urp-tree-models-253340
 Сountry house -> https://assetstore.unity.com/packages/3d/environments/urban/ountry-house-125731
 Desert Buildings Modular -> https://assetstore.unity.com/packages/3d/environments/urban/desert-buildings-modular-144178
+Village Buildings -> https://assetstore.unity.com/packages/3d/environments/urban/village-buildings-77486
