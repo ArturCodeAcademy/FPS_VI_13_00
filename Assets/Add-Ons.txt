@@ -9,3 +9,4 @@ URP Tree Models -> https://assetstore.unity.com/packages/3d/vegetation/trees/urp
 Desert Buildings Modular -> https://assetstore.unity.com/packages/3d/environments/urban/desert-buildings-modular-144178
 Village Buildings -> https://assetstore.unity.com/packages/3d/environments/urban/village-buildings-77486
 Interactive Physical Door Pack -> https://assetstore.unity.com/packages/tools/physics/interactive-physical-door-pack-163249
+Flashlight -> https://assetstore.unity.com/packages/3d/props/electronics/free-flashlight-293680
