@@ -18,7 +18,7 @@ public class PlayerItemHolder : MonoBehaviour
 	public HoldableItem? PreviousItem
 		=> ItemsCount > 0 ? _items[(_currentItemIndex - 1 + ItemsCount) % ItemsCount] : null;
 
-	private Animation _animation;
+	private Animator _animator;
 	private List<HoldableItem> _items = new();
 	private int _currentItemIndex = 0;
 	private Action? _callback;
@@ -30,7 +30,7 @@ public class PlayerItemHolder : MonoBehaviour
 
 	private void Awake()
 	{
-		_animation = GetComponent<Animation>();
+		_animator = GetComponent<Animator>();
 	}
 
 	private void Start()
@@ -67,7 +67,7 @@ public class PlayerItemHolder : MonoBehaviour
 		if (_items.Count < 2)
 			return;
 
-		_animation.Play();
+		_animator.SetTrigger("Change");
 
 		OnItemChangingToNext?.Invoke();
 		_callback = () =>
@@ -87,7 +87,7 @@ public class PlayerItemHolder : MonoBehaviour
 		if (_items.Count < 2)
 			return;
 
-		_animation.Play();
+		_animator.SetTrigger("Change");
 
 		OnItemChangingToPrevious?.Invoke();
 		_callback = () =>
@@ -118,7 +118,7 @@ public class PlayerItemHolder : MonoBehaviour
 
 		if (_items.Count == 1)
 		{
-			_animation?.Play();
+			_animator.SetTrigger("Change");
 			_callback = () =>
 			{
 				_currentItemIndex = 0;
@@ -151,7 +151,7 @@ public class PlayerItemHolder : MonoBehaviour
 			}
 			else
 			{
-				_animation.Play();
+				_animator.SetTrigger("Change");
 
 				_callback = () =>
 				{
