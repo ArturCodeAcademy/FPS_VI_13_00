@@ -6,6 +6,13 @@ public class Flashlight : DefaultHoldableItem
 
 	[SerializeField] private Light _light;
 
+	protected override void Awake()
+	{
+		base.Awake();
+		enabled = false;
+		_light.enabled = false;
+	}
+
 	private void Update()
 	{
 		if (Input.GetMouseButtonDown(0))
@@ -31,5 +38,6 @@ public class Flashlight : DefaultHoldableItem
 	{
 		base.OnDrop();
 		_light.enabled = false;
+		enabled = false;
 	}
 }
