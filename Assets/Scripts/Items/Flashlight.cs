@@ -3,6 +3,7 @@ using UnityEngine;
 public class Flashlight : DefaultHoldableItem
 {
     public bool IsOn => _light.enabled;
+	public override Color IconColor => _light.color;
 
 	[SerializeField] private Light _light;
 
