@@ -1,10 +1,13 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(CharacterGravityController))]
 public class PlayerJump : MonoBehaviour
 {
-    [Header("Params")]
+	public event EventHandler Jumped;
+
+	[Header("Params")]
 	[SerializeField, Min(0.5f)] private float _jumpHeight = 1f;
 	[SerializeField, Min(1)] private int _jumpCount = 2;
 	[SerializeField] private float _minVelocityToJump = -0.5f;
@@ -33,6 +36,7 @@ public class PlayerJump : MonoBehaviour
 		{
 			_gravityController.SetVelocity(_jumpVelocity);
 			_jumpLeft--;
+			Jumped?.Invoke(this, EventArgs.Empty);
 		}
 	}
 

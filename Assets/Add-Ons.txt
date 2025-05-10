@@ -11,3 +11,4 @@ Village Buildings -> https://assetstore.unity.com/packages/3d/environments/urban
 Interactive Physical Door Pack -> https://assetstore.unity.com/packages/tools/physics/interactive-physical-door-pack-163249
 Flashlight -> https://assetstore.unity.com/packages/3d/props/electronics/free-flashlight-293680
 Mines and Cave Set -> https://assetstore.unity.com/packages/3d/environments/mines-and-cave-set-305701
+Free Steel Ladder Pack -> https://assetstore.unity.com/packages/3d/props/exterior/free-steel-ladder-pack-24892

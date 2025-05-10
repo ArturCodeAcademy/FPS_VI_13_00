@@ -3,6 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(CharacterGravityController))]
 [RequireComponent(typeof(PlayerCrouch))]
+[RequireComponent(typeof(PlayerClimbing))]
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Params")]
@@ -14,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
 	private CharacterController _characterController;
 	private CharacterGravityController _gravityController;
 	private PlayerCrouch _crouch;
+	private PlayerClimbing _climbing;
 
 	private Vector3 _lastHorizontalVelocity;
 
@@ -22,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
 		_characterController = Player.Instance.CharacterController;
 		_gravityController = Player.Instance.GravityController;
 		_crouch = Player.Instance.PlayerCrouch;
+		_climbing = Player.Instance.PlayerClimbing;
 	}
 
 	private void Update()
@@ -35,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
 		Vector3 horizontalVelocity = transform.TransformDirection(input);
 
-		if (_gravityController.IsGrounded)
+		if (_gravityController.IsGrounded || _climbing.IsClimbing)
 		{
 			if (_crouch.IsCrouching)
 				horizontalVelocity *= _crouchSpeed;
